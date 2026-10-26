@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sổ Tay Liên Kết AI - ThayKhai Edu</title>
+    <link rel="icon" href="/favicon.ico?v=2" sizes="any">
+<link rel="icon" type="image/png" href="/icon-192.png?v=2">
+<link rel="apple-touch-icon" href="/icon-180.png?v=2">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#7c3aed">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Sổ Tay Liên Kết AI - ThayKhai Edu</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -936,17 +942,89 @@
                 font-size: 28px;
             }
         }
+
+        :root { --accent:#8b5cf6; --surface:#15112e; --tile:#201a43; --accent-soft:#ede9fe; }
+        [data-theme="ocean"] { --accent:#38bdf8; --surface:#0b2034; --tile:#11324c; --accent-soft:#e0f2fe; --purple-start:#0284c7; --purple-end:#0369a1; }
+        [data-theme="emerald"] { --accent:#34d399; --surface:#0a2520; --tile:#123c32; --accent-soft:#d1fae5; --purple-start:#059669; --purple-end:#047857; }
+        [data-theme="rose"] { --accent:#fb7185; --surface:#2c1423; --tile:#432036; --accent-soft:#ffe4e6; --purple-start:#e11d48; --purple-end:#be123c; --main-bg-start:#1b0d17; --main-bg-end:#351327; --neon-purple:#fb7185; --card-border:#753348; }
+        .app-topbar { display:flex;align-items:center;justify-content:flex-end;gap:12px;min-height:48px;position:relative;z-index:20; }
+        .account-control { display:flex;align-items:center;justify-content:flex-end;gap:10px;max-width:100%; }
+        #cloudSyncStatus { color:var(--text-dim);font-size:11px;max-width:260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+        .google-login { background:#fff;color:#1e293b;box-shadow:0 3px 12px #0002;min-height:40px; }
+        .google-login span { color:#4285f4;font-weight:800;font-size:18px; }
+        .mobile-menu,.mobile-brand,.sidebar-scrim { display:none; }
+        .workspace { padding-top:16px; }
+        .main-board-container { background:var(--surface); }
+        .link-card { background:var(--tile); }
+        .search-input { background:var(--main-bg-start); }
+        .hero-title { background:linear-gradient(120deg,#fff,var(--accent));background-clip:text; }
+        .radio-card.active,.mode-btn.active { background:linear-gradient(135deg,var(--purple-start),var(--purple-end)); }
+        .radio-card:hover { border-color:var(--accent); }
+        .brand-subtitle-pill { background:var(--accent-soft);color:var(--purple-start); }
+        .main-board-container::before { background:linear-gradient(90deg,var(--accent),var(--purple-end)); }
+        .theme-picker { position:relative; }
+        .theme-picker summary { list-style:none; }
+        .theme-picker summary::-webkit-details-marker { display:none; }
+        .theme-options { position:absolute;z-index:40;top:calc(100% + 10px);left:0;width:205px;background:#fff;padding:8px;border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 12px 35px #0004; }
+        .theme-options button { width:100%;display:flex;align-items:center;gap:10px;background:#fff;border:0;border-radius:10px;padding:12px;color:#334155;cursor:pointer;text-align:left; }
+        .theme-options button[aria-pressed="true"] { background:#eef2ff;font-weight:800; }
+        .theme-options span { width:18px;height:18px;border-radius:50%; }
+        button:focus-visible,summary:focus-visible { outline:3px solid var(--accent);outline-offset:3px; }
+        @media(max-width:900px) {
+          body { display:block; }
+          .sidebar { position:fixed;left:0;top:0;bottom:0;width:min(320px,88vw);min-width:0;height:100dvh;z-index:100;visibility:hidden;transform:translateX(-105%);transition:transform .2s; }
+          .menu-open .sidebar { visibility:visible;transform:translateX(0); }
+          .sidebar-scrim:not([hidden]) { display:block;position:fixed;inset:0;background:#0009;backdrop-filter:blur(3px);border:0;z-index:90; }
+          .menu-open { overflow:hidden; }
+          .workspace { width:100%;max-width:100%;padding:0 16px 28px;gap:16px; }
+          .app-topbar { position:sticky;top:0;margin:0 -16px;padding:12px 14px;padding-top:max(12px,env(safe-area-inset-top));background:var(--main-bg-start);border-bottom:1px solid #ffffff14;gap:10px;display:grid;grid-template-columns:auto 1fr auto; }
+          .mobile-menu { display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;background:var(--tile);border:1px solid #ffffff24;border-radius:12px;color:#fff;font-size:20px;cursor:pointer; }
+          .sidebar-close { margin-left:auto;background:#e2e8f0;color:#334155;border:0; }
+          .mobile-brand { display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font-weight:700;font-size:13px; }
+          .mobile-brand img { width:34px;height:34px;border-radius:10px; }
+          .account-control { flex-wrap:wrap;max-width:170px;gap:4px; }
+          #cloudSyncStatus { font-size:9px;max-width:160px;order:2; }
+          .account-control .pill-btn { padding:8px 10px;font-size:11px;gap:6px;min-height:36px; }
+          .hero-header { align-items:flex-start;text-align:left;padding:8px 2px;gap:10px; }
+          .top-badge-pill { display:none; }
+          .hero-title { font-size:clamp(23px,6.3vw,32px);letter-spacing:0;line-height:1.3; }
+          .hero-desc { font-size:12px;line-height:1.7;color:#aebbd0; }
+          .action-pills-bar { display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%;margin-top:8px; }
+          .action-pills-bar>.pill-btn,.theme-picker summary { justify-content:center;min-height:44px;padding:9px 8px;font-size:11px;border-radius:12px; }
+          .theme-picker summary { height:100%; }
+          .main-board-container { padding:16px 12px;border-radius:20px;overflow:visible; }
+          .board-top-bar { gap:12px; }
+          .board-section-heading { font-size:11px;letter-spacing:.3px; }
+          .search-box-wrap { min-width:0;max-width:none;width:100%;flex-basis:100%; }
+          .search-input { font-size:16px;padding-right:12px;min-height:46px; }
+          .search-shortcut { display:none; }
+          .links-grid,.links-grid.compact-view { grid-template-columns:minmax(0,1fr);gap:12px; }
+          .link-card { padding:16px;border-radius:16px;min-width:0; }
+          .site-identity { min-width:0; }
+          .link-card-header { gap:8px; }
+          .link-card button { min-width:34px;min-height:34px; }
+          .link-card a { min-height:44px; }
+          .dashed-dropzone { padding:20px 12px; }
+          .dropzone-title { font-size:11px;line-height:1.8; }
+          .dropzone-sub { font-size:11px; }
+          .modal-box { max-width:calc(100vw - 24px);max-height:90dvh;overflow-y:auto; }
+          .modal-box input,.modal-box textarea,.modal-box select { font-size:16px; }
+        }
+        @media(max-width:360px) { .mobile-brand span { display:none; } }
+        @media(prefers-reduced-motion:reduce) { * { transition:none!important;scroll-behavior:auto!important; } }
+
     </style>
 </head>
 <body>
 
     <!-- ================= LEFT SIDEBAR ================= -->
-    <aside class="sidebar">
+    <button class="sidebar-scrim" onclick="toggleMenu(false)" aria-label="Đóng danh mục" hidden></button>
+    <aside class="sidebar" id="appSidebar">
+<button class="sidebar-close mobile-menu" onclick="toggleMenu(false)" aria-label="Đóng danh mục">✕</button>
         <div class="brand-card">
             <div class="brand-avatar-wrap">
                 <div class="brand-avatar-inner">
-                    <i class="fa-solid fa-robot"></i>
-                    <span>Giáo án AI</span>
+                    <img src="/icon-192.png" alt="Biểu tượng Sổ tay liên kết" style="width:100%;height:100%;object-fit:cover;">
                 </div>
                 <span class="status-dot"></span>
             </div>
@@ -985,6 +1063,15 @@
 
     <!-- ================= RIGHT WORKSPACE ================= -->
     <main class="workspace">
+        <div class="app-topbar">
+          <button class="mobile-menu" type="button" onclick="toggleMenu()" aria-label="Mở danh mục" aria-expanded="false">☰</button>
+          <a class="mobile-brand" href="/" aria-label="Sổ tay liên kết"><img src="/icon-192.png" alt=""> <span>Sổ tay liên kết</span></a>
+          <div id="cloudSyncPanel" class="account-control">
+            <span id="cloudSyncStatus" role="status" aria-live="polite">Đang kết nối...</span>
+            <button id="googleSignInButton" class="pill-btn google-login" type="button" hidden><span aria-hidden="true">G</span> Đăng nhập Google</button>
+            <button id="googleSignOutButton" class="pill-btn" type="button" hidden>Đăng xuất</button>
+          </div>
+        </div>
         <header class="hero-header">
             <div class="top-badge-pill">GIÁO DỤC 4.0 - TRỢ LÝ QUẢN LÝ CÔNG VIỆC SỐ</div>
             <h1 class="hero-title">SỔ TAY LIÊN KẾT AI</h1>
@@ -994,14 +1081,14 @@
 
             <!-- Action Pills Bar -->
             <div class="action-pills-bar">
-                <div id="cloudSyncPanel" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 14px;border:1px solid #cbd5e1;border-radius:14px;background:#fff;color:#1e293b;width:100%;justify-content:center;">
-                    <span id="cloudSyncStatus" role="status" aria-live="polite">Đang kiểm tra đồng bộ...</span>
-                    <button id="googleSignInButton" class="pill-btn" type="button" style="background:#2563eb;color:#fff;" hidden>Đăng nhập Google để đồng bộ</button>
-                    <button id="googleSignOutButton" class="pill-btn" type="button" style="background:#64748b;color:#fff;" hidden>Đăng xuất</button>
-                </div>
-                <button class="pill-btn theme-pill" onclick="cycleTheme()">
-                    <i class="fa-solid fa-palette"></i> Màu giao diện
-                </button>
+                
+                <details class="theme-picker"><summary class="pill-btn theme-pill"><i class="fa-solid fa-palette"></i> Màu giao diện</summary>
+<div class="theme-options" aria-label="Chọn màu giao diện">
+<button type="button" data-theme-choice="default" onclick="setTheme('default')"><span style="background:#8b5cf6"></span>Tím</button>
+<button type="button" data-theme-choice="ocean" onclick="setTheme('ocean')"><span style="background:#0ea5e9"></span>Đại dương</button>
+<button type="button" data-theme-choice="emerald" onclick="setTheme('emerald')"><span style="background:#10b981"></span>Ngọc lục bảo</button>
+<button type="button" data-theme-choice="rose" onclick="setTheme('rose')"><span style="background:#f43f5e"></span>Hồng</button>
+</div></details>
                 <button class="pill-btn green-pill" onclick="openModal()">
                     <i class="fa-solid fa-circle-plus"></i> + Thêm trang web mới
                 </button>
@@ -1012,13 +1099,6 @@
                     <i class="fa-solid fa-eye-slash"></i> Ẩn/Hiện ghi chú TK
                 </button>
 
-                <div class="admin-profile-pill">
-                    <div class="admin-avatar">VK</div>
-                    <div class="admin-meta">
-                        <span class="admin-name">Viet Khai Vo</span>
-                        <span class="admin-role">QUẢN TRỊ VIÊN <span>Vô thời hạn</span></span>
-                    </div>
-                </div>
             </div>
         </header>
 
@@ -1182,7 +1262,7 @@
         let activeCategory = 'all';
         let viewMode = 'full';
         let blurNotes = false;
-        const themes = ['default', 'ocean', 'emerald'];
+        const themes = ['default', 'ocean', 'emerald', 'rose'];
         let currentThemeIdx = 0;
 
         function saveToStorage() {
@@ -1243,6 +1323,7 @@
 
         function selectCategory(catId) {
             activeCategory = catId;
+            toggleMenu(false);
             const catObj = categories.find(c => c.id === catId);
             document.getElementById('currentCategoryHeading').textContent =
                 catObj ? catObj.name.toUpperCase() : 'DANH SÁCH LIÊN KẾT';
@@ -1420,15 +1501,24 @@
             document.getElementById('linksGrid').classList.toggle('hide-notes', blurNotes);
         }
 
-        function cycleTheme() {
-            currentThemeIdx = (currentThemeIdx + 1) % themes.length;
-            const theme = themes[currentThemeIdx];
-            if (theme === 'default') {
-                document.documentElement.removeAttribute('data-theme');
-            } else {
-                document.documentElement.setAttribute('data-theme', theme);
-            }
+        function setTheme(theme) {
+            if (!themes.includes(theme)) theme = 'default';
+            document.documentElement.dataset.theme = theme;
+            localStorage.setItem('THAYKHAI_THEME', theme);
+            currentThemeIdx = themes.indexOf(theme);
+            document.querySelectorAll('[data-theme-choice]').forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.themeChoice === theme)));
+            const colors = {default:'#7c3aed',ocean:'#0284c7',emerald:'#059669',rose:'#e11d48'};
+            document.querySelector('meta[name="theme-color"]').content = colors[theme];
         }
+        function cycleTheme() { setTheme(themes[(currentThemeIdx + 1) % themes.length]); }
+        function toggleMenu(force) {
+            const open = typeof force === 'boolean' ? force : !document.body.classList.contains('menu-open');
+            document.body.classList.toggle('menu-open', open);
+            document.querySelector('.sidebar-scrim').hidden = !open;
+            document.querySelector('.app-topbar .mobile-menu').setAttribute('aria-expanded', String(open));
+        }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') toggleMenu(false); });
+        setTheme(localStorage.getItem('THAYKHAI_THEME') || 'default');
 
         function exportBackup() {
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(links, null, 2));
