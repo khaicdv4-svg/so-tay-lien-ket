@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        .pill-btn[hidden] { display: none !important; }
         :root {
             --sidebar-bg: #F4F6FB;
             --sidebar-card: #FFFFFF;
@@ -993,6 +994,11 @@
 
             <!-- Action Pills Bar -->
             <div class="action-pills-bar">
+                <div id="cloudSyncPanel" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 14px;border:1px solid #cbd5e1;border-radius:14px;background:#fff;color:#1e293b;width:100%;justify-content:center;">
+                    <span id="cloudSyncStatus" role="status" aria-live="polite">Đang kiểm tra đồng bộ...</span>
+                    <button id="googleSignInButton" class="pill-btn" type="button" style="background:#2563eb;color:#fff;" hidden>Đăng nhập Google để đồng bộ</button>
+                    <button id="googleSignOutButton" class="pill-btn" type="button" style="background:#64748b;color:#fff;" hidden>Đăng xuất</button>
+                </div>
                 <button class="pill-btn theme-pill" onclick="cycleTheme()">
                     <i class="fa-solid fa-palette"></i> Màu giao diện
                 </button>
@@ -1170,7 +1176,9 @@
             }
         ];
 
-        let links = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultLinks;
+        let links;
+        try { links = JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch { links = null; }
+        if (!Array.isArray(links)) links = defaultLinks;
         let activeCategory = 'all';
         let viewMode = 'full';
         let blurNotes = false;
@@ -1179,7 +1187,17 @@
 
         function saveToStorage() {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(links));
+            window.dispatchEvent(new CustomEvent('so-tay-links-changed', { detail: { links } }));
         }
+
+        // The sync module calls this only after receiving the signed-in user's cloud data.
+        window.applyCloudLinks = function(cloudLinks) {
+            if (!Array.isArray(cloudLinks)) return;
+            links = cloudLinks;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(links));
+            renderCategories();
+            renderLinks();
+        };
 
         function removeVietnameseTones(str) {
             return str.normalize('NFD')
@@ -1472,5 +1490,6 @@
         renderCategories();
         renderLinks();
     </script>
+    <script type="module" src="./sync.js"></script>
 </body>
 </html>
