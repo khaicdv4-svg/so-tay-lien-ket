@@ -1013,6 +1013,39 @@
         @media(max-width:360px) { .mobile-brand span { display:none; } }
         @media(prefers-reduced-motion:reduce) { * { transition:none!important;scroll-behavior:auto!important; } }
 
+
+        [data-theme="light"], [data-theme="ivory"] {
+          color-scheme:light; --main-bg-start:#f1f5f9; --main-bg-end:#e8eef8;
+          --surface:#fff; --tile:#fff; --accent:#6d28d9; --text-light:#1e293b;
+          --text-dim:#475569; --card-border:#dce3ee; --card-hover-border:#a78bfa;
+          --sidebar-bg:#f8fafc; --accent-soft:#ede9fe; --purple-start:#7c3aed; --purple-end:#6d28d9;
+        }
+        [data-theme="ivory"] { --main-bg-start:#fff8ed; --main-bg-end:#f5eddd; --surface:#fffdf8; --tile:#fff; --accent:#92400e; --card-border:#e8dcc7; --card-hover-border:#c48b48; --sidebar-bg:#fbf5e9; --accent-soft:#fef3c7; --purple-start:#a16207; --purple-end:#854d0e; }
+        :is([data-theme="light"],[data-theme="ivory"]) .hero-title { background:none;-webkit-text-fill-color:var(--accent);color:var(--accent);filter:none; }
+        :is([data-theme="light"],[data-theme="ivory"]) :is(.hero-desc,.site-note,.dropzone-sub) { color:#475569; }
+        :is([data-theme="light"],[data-theme="ivory"]) :is(.site-name,.board-section-heading,.dropzone-title,.modal-header h3,.form-group label,.mobile-brand) { color:#1e293b; }
+        :is([data-theme="light"],[data-theme="ivory"]) .top-badge-pill { background:#fff;border-color:var(--card-border);color:#475569;box-shadow:none; }
+        :is([data-theme="light"],[data-theme="ivory"]) .main-board-container { border-color:var(--card-border);box-shadow:0 12px 32px #3341550c; }
+        :is([data-theme="light"],[data-theme="ivory"]) .link-card { border-color:var(--card-border);box-shadow:0 3px 12px #33415508; }
+        :is([data-theme="light"],[data-theme="ivory"]) .link-card:hover { box-shadow:0 8px 24px #33415515; }
+        :is([data-theme="light"],[data-theme="ivory"]) .site-note { background:var(--main-bg-start);border-left-color:var(--accent); }
+        :is([data-theme="light"],[data-theme="ivory"]) .site-cat-badge { background:var(--accent-soft);color:var(--accent);border-color:var(--card-border); }
+        :is([data-theme="light"],[data-theme="ivory"]) .icon-action-btn { color:#475569;background:#f1f5f9; }
+        :is([data-theme="light"],[data-theme="ivory"]) .icon-action-btn:hover { color:var(--accent);background:var(--accent-soft); }
+        :is([data-theme="light"],[data-theme="ivory"]) .icon-action-btn.pinned { color:#854d0e;background:#fef3c7;border-color:#e8cc7f; }
+        :is([data-theme="light"],[data-theme="ivory"]) .search-input { color:#1e293b;border-color:var(--card-border);background:var(--main-bg-start); }
+        :is([data-theme="light"],[data-theme="ivory"]) .search-shortcut { color:#475569;background:#e2e8f0; }
+        :is([data-theme="light"],[data-theme="ivory"]) .pill-btn { color:#334155;background:#fff;border-color:var(--card-border);box-shadow:0 2px 6px #33415508; }
+        :is([data-theme="light"],[data-theme="ivory"]) .green-pill { color:#047857;background:#ecfdf5;border-color:#a7f3d0; }
+        :is([data-theme="light"],[data-theme="ivory"]) .purple-pill { color:#6d28d9;background:#f5f3ff;border-color:#ddd6fe; }
+        :is([data-theme="light"],[data-theme="ivory"]) .red-pill { color:#b91c1c;background:#fff1f2;border-color:#fecdd3; }
+        :is([data-theme="light"],[data-theme="ivory"]) .dashed-dropzone { background:var(--main-bg-start);border-color:var(--card-border); }
+        :is([data-theme="light"],[data-theme="ivory"]) .cloud-icon-box { color:var(--accent);background:var(--accent-soft);border-color:var(--card-border);box-shadow:none; }
+        :is([data-theme="light"],[data-theme="ivory"]) .modal-box { background:var(--surface);color:#1e293b;border-color:var(--card-border); }
+        :is([data-theme="light"],[data-theme="ivory"]) .form-control { background:var(--main-bg-start);color:#1e293b;border-color:var(--card-border); }
+        :is([data-theme="light"],[data-theme="ivory"]) .mobile-menu { background:var(--surface);color:#334155;border-color:var(--card-border); }
+        :is([data-theme="light"],[data-theme="ivory"]) .theme-options button { color:#334155; }
+
     </style>
 </head>
 <body>
@@ -1088,6 +1121,8 @@
 <button type="button" data-theme-choice="ocean" onclick="setTheme('ocean')"><span style="background:#0ea5e9"></span>Đại dương</button>
 <button type="button" data-theme-choice="emerald" onclick="setTheme('emerald')"><span style="background:#10b981"></span>Ngọc lục bảo</button>
 <button type="button" data-theme-choice="rose" onclick="setTheme('rose')"><span style="background:#f43f5e"></span>Hồng</button>
+<button type="button" data-theme-choice="light" onclick="setTheme('light')"><span style="background:#e2e8f0;border:1px solid #94a3b8"></span>Trắng thanh lịch</button>
+<button type="button" data-theme-choice="ivory" onclick="setTheme('ivory')"><span style="background:#fff0cd;border:1px solid #d6ad64"></span>Kem dịu mắt</button>
 </div></details>
                 <button class="pill-btn green-pill" onclick="openModal()">
                     <i class="fa-solid fa-circle-plus"></i> + Thêm trang web mới
@@ -1262,7 +1297,7 @@
         let activeCategory = 'all';
         let viewMode = 'full';
         let blurNotes = false;
-        const themes = ['default', 'ocean', 'emerald', 'rose'];
+        const themes = ['default', 'ocean', 'emerald', 'rose', 'light', 'ivory'];
         let currentThemeIdx = 0;
 
         function saveToStorage() {
@@ -1507,7 +1542,7 @@
             localStorage.setItem('THAYKHAI_THEME', theme);
             currentThemeIdx = themes.indexOf(theme);
             document.querySelectorAll('[data-theme-choice]').forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.themeChoice === theme)));
-            const colors = {default:'#7c3aed',ocean:'#0284c7',emerald:'#059669',rose:'#e11d48'};
+            const colors = {default:'#7c3aed',ocean:'#0284c7',emerald:'#059669',rose:'#e11d48',light:'#f1f5f9',ivory:'#fff8ed'};
             document.querySelector('meta[name="theme-color"]').content = colors[theme];
         }
         function cycleTheme() { setTheme(themes[(currentThemeIdx + 1) % themes.length]); }
